@@ -1,0 +1,20 @@
+PODS:
+  - SDWebImage (3.7.6):
+    - SDWebImage/Core (= 3.7.6)
+  - SDWebImage/Core (3.7.6)
+  - Socket.IO-Client-Swift (8.0.2)
+  - WSK_iOS_SDK (0.0.1):
+    - Socket.IO-Client-Swift (~> 8.0.2)
+
+DEPENDENCIES:
+  - SDWebImage (~> 3.7.3)
+  - WSK_iOS_SDK (~> 0.0.1)
+
+SPEC CHECKSUMS:
+  SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
+  Socket.IO-Client-Swift: 136598e4a81a42b0e6855e7f94a0e5a6efdc5ff8
+  WSK_iOS_SDK: b30516303e51a13e3170fc48a2dfd9000c2b4e7b
+
+PODFILE CHECKSUM: a4abaa256895b933ffd49265437a6fa1cd3a3f38
+
+COCOAPODS: 1.1.1
