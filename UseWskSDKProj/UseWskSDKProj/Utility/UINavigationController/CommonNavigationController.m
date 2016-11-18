@@ -7,6 +7,7 @@
 //
 
 #import "CommonNavigationController.h"
+#import "Common.h"
 
 @interface CommonNavigationController ()<UIGestureRecognizerDelegate>
 
@@ -14,25 +15,24 @@
 
 @implementation CommonNavigationController
 
++ (void)initialize
+{
+    //设置导航栏的颜色
+//    [[UINavigationBar appearance] setBackgroundImage:[Common getImageWithColor:[UIColor colorWithRed:18/255.0 green:183/255.0 blue:246/255.0 alpha:1.0]] forBarMetrics:UIBarMetricsDefault];
+    //禁用分割线
+//    [UINavigationBar appearance].shadowImage = [UIImage new];
+    //设置半透明效果
+//    [UINavigationBar appearance].translucent = NO;
+    
+//    [UINavigationBar appearance].tintColor = [UIColor whiteColor];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
     //边缘滑动（当leftBarButtonItem被覆盖也可以滑动）
     self.interactivePopGestureRecognizer.delegate = self;
-    
-    //全屏滑动
-//    // 获取系统自带滑动手势的target对象
-//    id target = self.interactivePopGestureRecognizer.delegate;
-//    // 创建全屏滑动手势，调用系统自带滑动手势的target的action方法
-//    //因为使用了苹果私有方法,所以有警告(handleNavigationTransition:)
-//    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:target action:@selector(handleNavigationTransition:)];
-//    // 设置手势代理，拦截手势触发
-//    pan.delegate = self;
-//    // 给导航控制器的view添加全屏滑动手势
-//    [self.view addGestureRecognizer:pan];
-//    // 禁止使用系统自带的滑动手势
-//    self.interactivePopGestureRecognizer.enabled = NO;
 }
 
 // 什么时候调用：每次触发手势之前都会询问下代理，是否触发。
@@ -52,15 +52,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

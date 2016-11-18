@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="I1s-nP-iJk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="I1s-nP-iJk">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,25 +21,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ey2-DE-4uO">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="nlu-Fn-uP1"/>
-                                    <constraint firstAttribute="width" constant="240" id="vjR-KZ-XsT"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P2n-h5-kv3">
-                                <state key="normal" title="联系客服[Push]"/>
+                                <rect key="frame" x="80" y="164" width="215" height="30"/>
+                                <state key="normal" title="联系客服[Push View Controller]"/>
                                 <connections>
                                     <action selector="pushControllerAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eqG-b7-3gN"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kb0-PL-QUv">
-                                <state key="normal" title="联系客服[Present]"/>
+                                <rect key="frame" x="70.5" y="214" width="234" height="30"/>
+                                <state key="normal" title="联系客服[Present View Controller]"/>
                                 <connections>
                                     <action selector="presentControllerAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tpw-U1-h81"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="20O-Ap-SVc">
+                                <rect key="frame" x="141.5" y="264" width="92" height="30"/>
+                                <state key="normal" title="切换聊天样式"/>
+                                <connections>
+                                    <action selector="switchChatLayout:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VOf-rz-EmF"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xcJ-o1-GIv">
+                                <rect key="frame" x="172" y="314" width="31" height="30"/>
                                 <state key="normal" title="注销"/>
                                 <connections>
                                     <action selector="logout:" destination="BYZ-38-t0r" eventType="touchUpInside" id="90N-Nk-hi2"/>
@@ -48,18 +55,15 @@
                             <constraint firstItem="Kb0-PL-QUv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="905-c8-0hJ"/>
                             <constraint firstItem="P2n-h5-kv3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="C3U-nt-MFt"/>
                             <constraint firstItem="xcJ-o1-GIv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Jmb-L6-gU2"/>
-                            <constraint firstItem="ey2-DE-4uO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Skx-g1-S94"/>
                             <constraint firstItem="P2n-h5-kv3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZYo-JK-Eoe"/>
                             <constraint firstItem="Kb0-PL-QUv" firstAttribute="top" secondItem="P2n-h5-kv3" secondAttribute="bottom" constant="20" id="cKE-OZ-dKv"/>
-                            <constraint firstItem="ey2-DE-4uO" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="9" id="mK4-eL-3KB"/>
-                            <constraint firstItem="xcJ-o1-GIv" firstAttribute="top" secondItem="Kb0-PL-QUv" secondAttribute="bottom" constant="20" id="p9x-cO-uKF"/>
-                            <constraint firstItem="P2n-h5-kv3" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="qhA-cg-wb7"/>
+                            <constraint firstItem="20O-Ap-SVc" firstAttribute="top" secondItem="Kb0-PL-QUv" secondAttribute="bottom" constant="20" id="eP9-m1-KC4"/>
+                            <constraint firstItem="xcJ-o1-GIv" firstAttribute="top" secondItem="20O-Ap-SVc" secondAttribute="bottom" constant="20" id="fal-D8-J12"/>
+                            <constraint firstItem="20O-Ap-SVc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="m0y-j8-FZs"/>
+                            <constraint firstItem="P2n-h5-kv3" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="100" id="pyL-dd-CV8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="BKV-X3-kwk"/>
-                    <connections>
-                        <outlet property="imageViewTest" destination="ey2-DE-4uO" id="bk0-Ma-zAI"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import <WskChatSDK/WskChatSDK.h>
 #import <UserNotifications/UserNotifications.h>
+#import "Common.h"
 
 @interface AppDelegate () <UNUserNotificationCenterDelegate>
 
@@ -28,14 +29,12 @@
                 NSLog(@"request authorization succeeded!");
             }
         }];
-        [[UIApplication sharedApplication] registerForRemoteNotifications]; //？？？?
-    } else if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
-        //categories
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+    } else {
+        //小于 iOS 10.0
         UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
         [application registerUserNotificationSettings:settings];
-        [[UIApplication sharedApplication] registerForRemoteNotifications]; //?????
-    } else {
-        //categories nil 小于 iOS 8.0
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
     }
     
     return YES;

@@ -1,11 +1,11 @@
 ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
 EMBEDDED_CONTENT_CONTAINS_SWIFT = YES
-FRAMEWORK_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/SDWebImage" "$PODS_CONFIGURATION_BUILD_DIR/Socket.IO-Client-Swift" "${PODS_ROOT}/WSK_iOS_SDK/WSKSDK"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/Socket.IO-Client-Swift" "${PODS_ROOT}/WSK_iOS_SDK/WSKSDK"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/WSK_iOS_SDK"
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
-OTHER_CFLAGS = $(inherited) -iquote "$PODS_CONFIGURATION_BUILD_DIR/SDWebImage/SDWebImage.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/Socket.IO-Client-Swift/SocketIO.framework/Headers" -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/WSK_iOS_SDK"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"stdc++.6.0.9" -l"z" -framework "AVFoundation" -framework "AudioToolbox" -framework "CoreMedia" -framework "CoreTelephony" -framework "CoreText" -framework "MobileCoreServices" -framework "SDWebImage" -framework "SocketIO" -framework "SystemConfiguration" -framework "UIKit" -framework "WskChatSDK"
+OTHER_CFLAGS = $(inherited) -iquote "$PODS_CONFIGURATION_BUILD_DIR/Socket.IO-Client-Swift/SocketIO.framework/Headers" -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/WSK_iOS_SDK"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"stdc++.6.0.9" -framework "AVFoundation" -framework "CoreFoundation" -framework "CoreGraphics" -framework "ImageIO" -framework "MobileCoreServices" -framework "SocketIO" -framework "SystemConfiguration" -framework "UIKit" -framework "UserNotifications" -framework "WskChatSDK"
 OTHER_SWIFT_FLAGS = $(inherited) "-D" "COCOAPODS"
 PODS_BUILD_DIR = $BUILD_DIR
 PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)

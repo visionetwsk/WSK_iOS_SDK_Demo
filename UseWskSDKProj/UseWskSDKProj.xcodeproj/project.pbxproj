@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		71BCC4BFCBA9442764139ED9 /* Pods_UseWskSDKProj.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC44ED73BCF82C39C1B4850 /* Pods_UseWskSDKProj.framework */; };
-		D0103EA51DB8677F009EB7F2 /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0103EA41DB8677F009EB7F2 /* Image.xcassets */; };
-		D069EA891DC33F6B00C9DAD2 /* WskChatSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D069EA881DC33F6B00C9DAD2 /* WskChatSDK.framework */; };
+		96E3498A84A3A4EFD44EB8D5 /* Pods_UseWskSDKProj.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00235AE506CB8447154462C2 /* Pods_UseWskSDKProj.framework */; };
 		D088E6E01D4B59B500C9862A /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D088E6DF1D4B59B500C9862A /* libstdc++.tbd */; };
+		D08F8E2D1DC9BE710006ECC3 /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D08F8E2C1DC9BE710006ECC3 /* Image.xcassets */; };
 		D0DCB94E1D9A5B9F00881E6F /* CommonNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DCB94D1D9A5B9F00881E6F /* CommonNavigationController.m */; };
+		D0E5C0161DDAEB5E0073F2FB /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E5C0151DDAEB5E0073F2FB /* Common.m */; };
 		D0F2028B1D47049900AC90F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F2028A1D47049900AC90F8 /* main.m */; };
 		D0F2028E1D47049900AC90F8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F2028D1D47049900AC90F8 /* AppDelegate.m */; };
 		D0F202911D47049900AC90F8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F202901D47049900AC90F8 /* ViewController.m */; };
@@ -34,15 +34,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1AC44ED73BCF82C39C1B4850 /* Pods_UseWskSDKProj.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UseWskSDKProj.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A706DC17D2AB02A874C90F80 /* Pods-UseWskSDKProj.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UseWskSDKProj.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UseWskSDKProj/Pods-UseWskSDKProj.debug.xcconfig"; sourceTree = "<group>"; };
-		D0103EA41DB8677F009EB7F2 /* Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Image.xcassets; sourceTree = "<group>"; };
+		00235AE506CB8447154462C2 /* Pods_UseWskSDKProj.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UseWskSDKProj.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A852A7025F7F72FEAA27F47 /* Pods-UseWskSDKProj.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UseWskSDKProj.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UseWskSDKProj/Pods-UseWskSDKProj.debug.xcconfig"; sourceTree = "<group>"; };
+		CA80C29E131B31E53630781D /* Pods-UseWskSDKProj.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UseWskSDKProj.release.xcconfig"; path = "Pods/Target Support Files/Pods-UseWskSDKProj/Pods-UseWskSDKProj.release.xcconfig"; sourceTree = "<group>"; };
 		D0244CCF1D80009800B1B2E0 /* UseWskSDKProj-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UseWskSDKProj-Bridging-Header.h"; sourceTree = "<group>"; };
-		D069EA881DC33F6B00C9DAD2 /* WskChatSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WskChatSDK.framework; path = "../../../../Library/Developer/Xcode/DerivedData/WskChatSDK-fjuojgwsuaexqhgtsemmkmmgmcck/Build/Products/Debug-iphonesimulator/WskChatSDK.framework"; sourceTree = "<group>"; };
 		D088E6DF1D4B59B500C9862A /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		D08F8E2C1DC9BE710006ECC3 /* Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Image.xcassets; sourceTree = "<group>"; };
 		D0DCB94C1D9A5B9F00881E6F /* CommonNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonNavigationController.h; sourceTree = "<group>"; };
 		D0DCB94D1D9A5B9F00881E6F /* CommonNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonNavigationController.m; sourceTree = "<group>"; };
 		D0DE814F1D9B9262002F0591 /* UseWskSDKProj.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UseWskSDKProj.entitlements; sourceTree = "<group>"; };
+		D0E5C0141DDAEB5E0073F2FB /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		D0E5C0151DDAEB5E0073F2FB /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Common.m; sourceTree = "<group>"; };
 		D0F202861D47049900AC90F8 /* UseWskSDKProj.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UseWskSDKProj.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0F2028A1D47049900AC90F8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D0F2028C1D47049900AC90F8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -53,7 +55,6 @@
 		D0F202951D47049900AC90F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D0F202981D47049900AC90F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D0F2029A1D47049900AC90F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DF53655DBCA901809A92380B /* Pods-UseWskSDKProj.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UseWskSDKProj.release.xcconfig"; path = "Pods/Target Support Files/Pods-UseWskSDKProj/Pods-UseWskSDKProj.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,31 +62,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D069EA891DC33F6B00C9DAD2 /* WskChatSDK.framework in Frameworks */,
 				D088E6E01D4B59B500C9862A /* libstdc++.tbd in Frameworks */,
-				71BCC4BFCBA9442764139ED9 /* Pods_UseWskSDKProj.framework in Frameworks */,
+				96E3498A84A3A4EFD44EB8D5 /* Pods_UseWskSDKProj.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		11E6C42D27B586BEE426BC5D /* Frameworks */ = {
+		A5D8DDF964A43614FF7A7206 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D069EA881DC33F6B00C9DAD2 /* WskChatSDK.framework */,
-				1AC44ED73BCF82C39C1B4850 /* Pods_UseWskSDKProj.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		B9BF0453B82BA1A5550A7C22 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				A706DC17D2AB02A874C90F80 /* Pods-UseWskSDKProj.debug.xcconfig */,
-				DF53655DBCA901809A92380B /* Pods-UseWskSDKProj.release.xcconfig */,
+				8A852A7025F7F72FEAA27F47 /* Pods-UseWskSDKProj.debug.xcconfig */,
+				CA80C29E131B31E53630781D /* Pods-UseWskSDKProj.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		CCDB78803906ECC7FE10314A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				00235AE506CB8447154462C2 /* Pods_UseWskSDKProj.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		D0244CCE1D7FFFD200B1B2E0 /* ThirdParty */ = {
@@ -121,13 +120,22 @@
 			path = UINavigationController;
 			sourceTree = "<group>";
 		};
+		D0E5C0131DDAEB4F0073F2FB /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				D0E5C0141DDAEB5E0073F2FB /* Common.h */,
+				D0E5C0151DDAEB5E0073F2FB /* Common.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		D0F2027D1D47049900AC90F8 = {
 			isa = PBXGroup;
 			children = (
 				D0F202881D47049900AC90F8 /* UseWskSDKProj */,
 				D0F202871D47049900AC90F8 /* Products */,
-				11E6C42D27B586BEE426BC5D /* Frameworks */,
-				B9BF0453B82BA1A5550A7C22 /* Pods */,
+				A5D8DDF964A43614FF7A7206 /* Pods */,
+				CCDB78803906ECC7FE10314A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -148,6 +156,7 @@
 				D0F202901D47049900AC90F8 /* ViewController.m */,
 				D0F202921D47049900AC90F8 /* Main.storyboard */,
 				D0F202971D47049900AC90F8 /* LaunchScreen.storyboard */,
+				D0E5C0131DDAEB4F0073F2FB /* Common */,
 				D0DCB94A1D9A5B5900881E6F /* Utility */,
 				D0244CCE1D7FFFD200B1B2E0 /* ThirdParty */,
 				D0646F651D4EF81700CBFAB4 /* Framework */,
@@ -159,11 +168,11 @@
 		D0F202891D47049900AC90F8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D08F8E2C1DC9BE710006ECC3 /* Image.xcassets */,
 				D0F2029A1D47049900AC90F8 /* Info.plist */,
 				D0DE814F1D9B9262002F0591 /* UseWskSDKProj.entitlements */,
 				D0F2028A1D47049900AC90F8 /* main.m */,
 				D0F202951D47049900AC90F8 /* Assets.xcassets */,
-				D0103EA41DB8677F009EB7F2 /* Image.xcassets */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -175,13 +184,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D0F2029D1D47049900AC90F8 /* Build configuration list for PBXNativeTarget "UseWskSDKProj" */;
 			buildPhases = (
-				7C27E728531B7B8EF120E539 /* [CP] Check Pods Manifest.lock */,
+				CA5EFE3B9BBF4317A1355DB9 /* [CP] Check Pods Manifest.lock */,
 				D0F202821D47049900AC90F8 /* Sources */,
 				D0F202831D47049900AC90F8 /* Frameworks */,
 				D0F202841D47049900AC90F8 /* Resources */,
 				D08387771D50453C002BBF16 /* Embed Frameworks */,
-				F97EAED80562F5491610D709 /* [CP] Embed Pods Frameworks */,
-				49D8436F8664BAD9D5C87A07 /* [CP] Copy Pods Resources */,
+				DC0C4B9B68979A500E0D1A24 /* [CP] Embed Pods Frameworks */,
+				57E064C088AEA3CEB64EFD7F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -198,7 +207,7 @@
 		D0F2027E1D47049900AC90F8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "焱 孙";
 				TargetAttributes = {
 					D0F202851D47049900AC90F8 = {
@@ -241,8 +250,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0F202991D47049900AC90F8 /* LaunchScreen.storyboard in Resources */,
-				D0103EA51DB8677F009EB7F2 /* Image.xcassets in Resources */,
 				D0F202961D47049900AC90F8 /* Assets.xcassets in Resources */,
+				D08F8E2D1DC9BE710006ECC3 /* Image.xcassets in Resources */,
 				D0F202941D47049900AC90F8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -250,7 +259,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		49D8436F8664BAD9D5C87A07 /* [CP] Copy Pods Resources */ = {
+		57E064C088AEA3CEB64EFD7F /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -265,7 +274,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UseWskSDKProj/Pods-UseWskSDKProj-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7C27E728531B7B8EF120E539 /* [CP] Check Pods Manifest.lock */ = {
+		CA5EFE3B9BBF4317A1355DB9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -280,7 +289,7 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		F97EAED80562F5491610D709 /* [CP] Embed Pods Frameworks */ = {
+		DC0C4B9B68979A500E0D1A24 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -304,6 +313,7 @@
 			files = (
 				D0DCB94E1D9A5B9F00881E6F /* CommonNavigationController.m in Sources */,
 				D0F202911D47049900AC90F8 /* ViewController.m in Sources */,
+				D0E5C0161DDAEB5E0073F2FB /* Common.m in Sources */,
 				D0F2028E1D47049900AC90F8 /* AppDelegate.m in Sources */,
 				D0F2028B1D47049900AC90F8 /* main.m in Sources */,
 			);
@@ -420,7 +430,7 @@
 		};
 		D0F2029E1D47049900AC90F8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A706DC17D2AB02A874C90F80 /* Pods-UseWskSDKProj.debug.xcconfig */;
+			baseConfigurationReference = 8A852A7025F7F72FEAA27F47 /* Pods-UseWskSDKProj.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -437,14 +447,7 @@
 				INFOPLIST_FILE = UseWskSDKProj/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-framework",
-					"\"SDWebImage\"",
-					"-framework",
-					"\"SocketIO\"",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited";
 				PRODUCT_BUNDLE_IDENTIFIER = com.visionet.inhouse.UseWskSDKProj;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "5983fcf1-8ffb-42f3-8458-774366ccc866";
@@ -452,12 +455,13 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "UseWskSDKProj/ThirdParty/UseWskSDKProj-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		D0F2029F1D47049900AC90F8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DF53655DBCA901809A92380B /* Pods-UseWskSDKProj.release.xcconfig */;
+			baseConfigurationReference = CA80C29E131B31E53630781D /* Pods-UseWskSDKProj.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -474,20 +478,14 @@
 				INFOPLIST_FILE = UseWskSDKProj/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-framework",
-					"\"SDWebImage\"",
-					"-framework",
-					"\"SocketIO\"",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited";
 				PRODUCT_BUNDLE_IDENTIFIER = com.visionet.inhouse.UseWskSDKProj;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "32d0afa7-05f8-4354-b726-1f95e2c3a6d3";
 				PROVISIONING_PROFILE_SPECIFIER = UseWskSDKProjDevProfile;
 				SWIFT_OBJC_BRIDGING_HEADER = "UseWskSDKProj/ThirdParty/UseWskSDKProj-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
