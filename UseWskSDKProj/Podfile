@@ -3,6 +3,6 @@ use_frameworks!
 
 target "UseWskSDKProj" do
     
-pod 'WSK_iOS_SDK', '~> 0.0.2'
+pod 'WSK_iOS_SDK', '~> 0.0.3'
 
 end

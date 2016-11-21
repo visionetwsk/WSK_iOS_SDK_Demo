@@ -35,7 +35,7 @@
 	* UserNotifications.framework
 	* libstdc++.6.0.9.tbd
 
-* 添加第三方库：在Podfile中添加Socket.IO的依赖， pod 'Socket.IO-Client-Swift', '~> 8.0.2'
+* 添加第三方库：在Podfile中添加Socket.IO的依赖， pod 'Socket.IO-Client-Swift', '~> 8.1.2'
 
 * 在 Build Settings -> Other Linker Flags 中添加 -ObjC 
 
@@ -44,7 +44,7 @@
 在 Podfile 文件中加入 
 
 ```
-	pod 'WSK_iOS_SDK', '~> 0.0.2'
+	pod 'WSK_iOS_SDK', '~> 0.0.3'
 ```
 > 推荐使用CocoaPods集成，因为只需在Podfile中加入上面一句即可
 
