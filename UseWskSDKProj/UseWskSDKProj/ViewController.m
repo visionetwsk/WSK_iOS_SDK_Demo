@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import <WskChatSDK/WskChatSDK.h>
+#import <WSKChatSDK/WSKChatSDK.h>
 #import "Common.h"
 #import "CommonNavigationController.h"
 
@@ -59,6 +59,8 @@
     //输入框文字颜色
     [[WSKSDK sharedSDK] customUIConfig].inputTextColor = [UIColor blackColor];
     
+    //客户头像URL
+    [[WSKSDK sharedSDK] customUIConfig].customerHeadURL = [NSURL URLWithString:@"http://visionet.findest.com/letsdesk/assets/img/logo-1.png"];
     //客户头像
     [[WSKSDK sharedSDK] customUIConfig].customerHeadImage = [UIImage imageNamed:@"customer_avatar"];
     

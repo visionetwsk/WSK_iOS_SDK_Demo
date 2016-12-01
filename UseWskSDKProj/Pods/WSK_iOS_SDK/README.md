@@ -41,12 +41,17 @@
 
 ### CocoaPods集成
 
-在 Podfile 文件中加入 
+在 Podfile 文件中加入  ```pod 'WSK_iOS_SDK'```
 
 ```
-	pod 'WSK_iOS_SDK', '~> 0.0.3'
+platform :ios, '8.0'      
+use_frameworks!		#必须加入这一句，因为有依赖swift库
+
+target 'YourApp' do
+    pod 'WSK_iOS_SDK', '~> 0.0.4' 
+end
 ```
-> 推荐使用CocoaPods集成，因为只需在Podfile中加入上面一句即可
+> 推荐使用CocoaPods集成，在Podfile中加入 WSK\_iOS\_SDK 的引用即可
 
 ### 配置工程
 
@@ -74,12 +79,14 @@
 * SDK 不支持 bitcode  
 向 Build Settings → Linking → Enable Bitcode 中设置 NO。
 
+### 集成遇到问题，请参考 [FAQ](https://github.com/visionetwsk/WSK_iOS_SDK/wiki/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98 "target=_blank")
+
 
 ## 使用详解
 
 ### 使用简介
 
-* 在需要使用 SDK 的地方 #import \<WskChatSDK/WskChatSDK.h>。WSKSDK 类是整个SDK的唯一主入口，是一个单例。各个函数简介：
+* 在需要使用 SDK 的地方 #import \<WSKChatSDK/WSKChatSDK.h>。WSKSDK 类是整个SDK的唯一主入口，是一个单例。各个函数简介：
  
 ```objc
 	初始化：
@@ -117,7 +124,9 @@
 	    return YES;
 	}
 ```
-appKey可以在“管理后台” -> “设置” -> “App接入” -> “2. App Key” 找到, appName对应管理后台添加一个 app 时填写的 App 名称。
+appKey 可以通过公司管理员账号登录 “微上客Web端” -> “设置” -> “App Sdk设置” -> “App Key” 找到, appName对应添加一个 app 时填写的 App 名称。   
+> 注意要先在 “微上客Web端” -> “设置” -> “渠道管理” 添加移动端渠道。
+
 
 ### 设置用户信息
 设置个人信息，用户帐号登录成功之后，调用此函数。如果不设置用户信息，则使用匿名用户的方式进行客服咨询。应该在进入聊天咨询界面之前设置用户信息。
@@ -278,7 +287,7 @@ WSKUIConfig 只是负责替换部分皮肤相关内容，不包含所有的图�
 ```
 
 ### APNS推送
-* [制作推送证书并在管理后台配置](https://github.com/visionetwsk/WSK_iOS_SDK/wiki/iOS-证书-设置指南)
+* [制作推送证书并在管理后台配置](https://github.com/visionetwsk/WSK_iOS_SDK/wiki/iOS-p12%E6%8E%A8%E9%80%81%E8%AF%81%E4%B9%A6%E8%AE%BE%E7%BD%AE%E6%8C%87%E5%8D%97)
   
 * Capabilities
 如使用Xcode8及以上环境开发，请开启Application Target的Capabilities->Push Notifications选项，如图：  
@@ -340,8 +349,8 @@ WSKUIConfig 只是负责替换部分皮肤相关内容，不包含所有的图�
 
 应用层退出自己的账号时需要调用 SDK 的注销操作，该操作会通知服务器进行 APNS 推送信息的解绑操作，避免用户已退出但推送依然发送到当前设备的情况发生。
 
-## FAQ
-如果集成过程中遇到任何问题，可查看 [FAQ](./iOS_FAQ.html "target=_blank")
+## 常见问题
+如果集成过程中遇到任何问题，可查看 [FAQ](https://github.com/visionetwsk/WSK_iOS_SDK/wiki/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98 "target=_blank")
 
 ## 补充说明
 

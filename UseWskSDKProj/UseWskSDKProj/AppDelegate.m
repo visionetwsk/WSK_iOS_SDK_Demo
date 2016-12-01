@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import <WskChatSDK/WskChatSDK.h>
+#import <WSKChatSDK/WSKChatSDK.h>
 #import <UserNotifications/UserNotifications.h>
 #import "Common.h"
 
