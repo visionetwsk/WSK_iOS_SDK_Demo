@@ -48,7 +48,7 @@ platform :ios, '8.0'
 use_frameworks!		#必须加入这一句，因为有依赖swift库
 
 target 'YourApp' do
-    pod 'WSK_iOS_SDK', '~> 0.0.4' 
+    pod 'WSK_iOS_SDK', '~> 1.0' 
 end
 ```
 > 推荐使用CocoaPods集成，在Podfile中加入 WSK\_iOS\_SDK 的引用即可
@@ -98,14 +98,17 @@ end
 	自定义客户端聊天组件UI效果：
 		- (WSKUIConfig *)customUIConfig;
 		
-	APNS推送：
+	APNs推送：
 		- (void)updateApnsToken:(NSData *)token;
 		
 	注销：
 		- (void)logout:(WSKCompletionBlock)completion;
 
-	设置用户信息
+	设置用户信息：
 		- (void)setUserInfo:(WSKUserVo *)userVo;
+
+	设置调试模式获取更多的Log信息，发布应用时建议不开启，用于节省性能开销：
+		- (void)setDebugMode;
 		
 ```
 
@@ -124,18 +127,29 @@ end
 	    return YES;
 	}
 ```
-appKey 可以通过公司管理员账号登录 “微上客Web端” -> “设置” -> “App Sdk设置” -> “App Key” 找到, appName对应添加一个 app 时填写的 App 名称。   
-> 注意要先在 “微上客Web端” -> “设置” -> “渠道管理” 添加移动端渠道。
+appKey 可以通过公司管理员账号登录 “微上客Web端” -> “配置” -> “App Sdk设置” -> “App Key：渠道appKey” 找到, appName对应添加一个 app 时填写的 App 名称， 详细步骤请参见 [新建App和上传推送证书](https://github.com/visionetwsk/WSK_iOS_SDK/wiki/%E6%96%B0%E5%BB%BAApp%E5%92%8C%E4%B8%8A%E4%BC%A0%E6%8E%A8%E9%80%81%E8%AF%81%E4%B9%A6 "target=_blank")  
 
 
 ### 设置用户信息
-设置个人信息，用户帐号登录成功之后，调用此函数。如果不设置用户信息，则使用匿名用户的方式进行客服咨询。应该在进入聊天咨询界面之前设置用户信息。
+设置个人信息，用户帐号登录成功之后，调用设置用户信息函数（userID必填，建议同时设置用户昵称（userName））。如果不设置用户信息，则使用匿名用户的方式进行客服咨询。应该在进入聊天咨询界面之前设置用户信息。
 
 ```objc
 	WSKUserVo *userVo = [[WSKUserVo alloc]init];
-	userVo.strUserID = @"45471429666";
-	userVo.strUserName = @"iOS_SDK_用户1";
+	userVo.userID = @"45471429666";      //用户标识,必填
+	userVo.userName = @"iOS_SDK_用户1";   //用户昵称
+	userVo.headerImageURL = @"http://visionet.findest.com/letsdesk/assets/img/logo-1.png";  //用户头像
+    userVo.gender = 1;  //性别,1：男、2：女
+    userVo.phoneNumber = @"18611111111";  //手机
+    userVo.telephone = @"021-12345678";  //固定电话
+    userVo.email = @"71232131@qq.com";  //邮箱
+    
+    userVo.address = @"上海市长宁区";  //地址
+    userVo.position = @"人事经理";  //职位
+    userVo.department = @"人事部";  //单位
+    userVo.birthday = @"1988-12-12";  //生日(yyyy-MM-dd)
+    userVo.remark = @"备注SDK";  //备注
 	[[WSKSDK sharedSDK] setUserInfo:userVo];
+
 ```
 
 ### 集成客户聊天组件
@@ -175,8 +189,7 @@ appKey 可以通过公司管理员账号登录 “微上客Web端” -> “设�
     								target:self action:@selector(onBack:)];
 ```
 
-“onBack” 的样例：
-
+“onBack” 的样例：  
 ```objc
 - (void)onBack:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -185,7 +198,51 @@ appKey 可以通过公司管理员账号登录 “微上客Web端” -> “设�
     								
 如果您的代码要求所有viewController继承某个公共基类，并且公共基类对UINavigationController统一做了某些处理；或者其他原因导致使用第一种方式集成会有问题；这些情况下，建议您使用第二种方式集成。
 
-### 自定义访客端聊天组件UI效果
+### 监控SDK内的链接跳转动作
+在WSKChatViewController控制器中设置链接跳转的监听block即可     
+如果block返回为NO,则不执行SDK默认处理.如果block返回为YES则执行SDK默认跳转处理：   
+
+```objc
+/**
+ *  提供了监控SDK内消息跳转行为的block;
+ *  如果设置了block回调，则在链接点击之后执行该block
+ *  如果block返回为NO,则不执行SDK默认处理.如果block返回为YES则执行SDK默认跳转处理
+ */
+typedef BOOL (^WSKLinkClickBlock)(NSString *linkAddress);
+
+@interface WSKChatViewController : UIViewController
+
+...
+
+/**
+ *  监控SDK内消息跳转行为的block
+ *
+ *  @return 是否执行SDK默认的跳转行为
+ */
+@property (nonatomic, copy) WSKLinkClickBlock linkClickBlock;
+
+...
+
+@end
+
+```
+
+参考代码：  
+
+```objc
+//启动聊天界面
+WSKChatViewController *chatViewController = [[WSKSDK sharedSDK] chatViewController];
+chatViewController.chatTitle = @"微上客SDK测试";
+//设置回调
+chatViewController.linkClickBlock = ^(NSString *urlString) {
+    ViewController2 *viewController2 = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"ViewController2"];
+    [self.navigationController pushViewController:viewController2 animated:YES];
+    return NO;
+};
+
+```
+
+### 自定义客户端聊天组件UI效果
 
 获取自定义UI类对象
 
@@ -243,6 +300,11 @@ WSKUIConfig 只是负责替换部分皮肤相关内容，不包含所有的图�
     imageView.contentMode = UIViewContentModeScaleToFill;
     [[WSKSDK sharedSDK] customUIConfig].chatBackground = imageView;
     
+   /**
+ 	 *  客户头像URL,优先使用URL加载图片
+ 	 */
+    [[WSKSDK sharedSDK] customUIConfig].customerHeadURL = [NSURL URLWithString:@"http://visionet.findest.com/letsdesk/assets/img/logo-1.png"];
+    
 	/**
 	 *  客户头像
 	 */
@@ -286,19 +348,20 @@ WSKUIConfig 只是负责替换部分皮肤相关内容，不包含所有的图�
     [WSKUIConfig sharedInstance].isShowKeyboard = YES;
 ```
 
-### APNS推送
-* [制作推送证书并在管理后台配置](https://github.com/visionetwsk/WSK_iOS_SDK/wiki/iOS-p12%E6%8E%A8%E9%80%81%E8%AF%81%E4%B9%A6%E8%AE%BE%E7%BD%AE%E6%8C%87%E5%8D%97)
+### APNs推送
+* [制作推送证书并在微上客网站配置](https://github.com/visionetwsk/WSK_iOS_SDK/wiki/iOS-p12%E6%8E%A8%E9%80%81%E8%AF%81%E4%B9%A6%E8%AE%BE%E7%BD%AE%E6%8C%87%E5%8D%97)
   
-* Capabilities
-如使用Xcode8及以上环境开发，请开启Application Target的Capabilities->Push Notifications选项，如图：  
-![WSK_SDK_iOS](https://raw.githubusercontent.com/visionetwsk/Resource/master/image/capabilities_intro.png)
+* 请开启Application Target的Capabilities->Push Notifications选项，如图：  
+![WSK_SDK_iOS](https://raw.githubusercontent.com/visionetwsk/Resource/master/image/capabilities_intro.png)  
+
+* 请开启Application Target的Capabilities->Background Modes -> Remote notifications选项：  
+![WSK_SDK_iOS](https://raw.githubusercontent.com/visionetwsk/Resource/master/image/capabilities_intro2.png)
 
 
-* 初始化
+* 注册APNs推送
 
 ```objc
-	- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
-	{    
+	- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 		......
 		
 		//传入正确的App名称
@@ -306,6 +369,7 @@ WSKUIConfig 只是负责替换部分皮肤相关内容，不包含所有的图�
 	    
 		//注册APNs推送
 		if ([[UIDevice currentDevice].systemVersion floatValue] >= 10.0) {
+			 [UNUserNotificationCenter currentNotificationCenter].delegate = self;
 		    [[UNUserNotificationCenter currentNotificationCenter] requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) completionHandler:^(BOOL granted, NSError * _Nullable error) {
 		        if (!error) {
 		            NSLog(@"request authorization succeeded!");
@@ -325,12 +389,10 @@ WSKUIConfig 只是负责替换部分皮肤相关内容，不包含所有的图�
 	}
 ```
 
-* 把 APNS Token 传给 SDK
+* 把 APNs Token 传给 SDK
 
 ```objc
-	- (void)application:(UIApplication *)app 
-					didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
-	{
+	- (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 		......
 		
 	    [[WSKSDK sharedSDK] updateApnsToken:deviceToken];
@@ -338,6 +400,42 @@ WSKUIConfig 只是负责替换部分皮肤相关内容，不包含所有的图�
 	    ......
 	}
 ```
+
+* 接收APNs推送消息
+
+```objc
+// iOS8、iOS9 接收APNs推送的方法
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void(^)(UIBackgroundFetchResult))completionHandler {
+    NSLog(@"收到APNs通知消息：%@", userInfo);
+    //Required
+    completionHandler(UIBackgroundFetchResultNewData);
+}
+
+// iOS10以及之后的版本接收APNs推送的方法
+// 前台收到推送
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler {
+    NSLog(@"收到APNs通知消息：%@", notification.request.content.userInfo);
+    if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+        //远程通知
+    } else {
+        //判断为本地通知
+    }
+    completionHandler(UNNotificationPresentationOptionAlert | UNNotificationPresentationOptionSound | UNNotificationPresentationOptionBadge);
+}
+
+// 点击通知栏触发的推送
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)())completionHandler {
+    NSLog(@"收到APNs通知消息：%@", response.notification.request.content.userInfo);
+    if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+        //远程通知
+    } else {
+        //判断为本地通知
+    }
+    completionHandler();
+}
+
+```
+
 
 ### 注销
 
@@ -347,7 +445,7 @@ WSKUIConfig 只是负责替换部分皮肤相关内容，不包含所有的图�
     }];
 ```
 
-应用层退出自己的账号时需要调用 SDK 的注销操作，该操作会通知服务器进行 APNS 推送信息的解绑操作，避免用户已退出但推送依然发送到当前设备的情况发生。
+应用层退出自己的账号时需要调用 SDK 的注销操作，该操作会通知服务器进行 APNs 推送信息的解绑操作，避免用户已退出但推送依然发送到当前设备的情况发生。
 
 ## 常见问题
 如果集成过程中遇到任何问题，可查看 [FAQ](https://github.com/visionetwsk/WSK_iOS_SDK/wiki/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98 "target=_blank")
@@ -356,6 +454,4 @@ WSKUIConfig 只是负责替换部分皮肤相关内容，不包含所有的图�
 
 如果您看完此文档后，还有任何集成方面的疑问，可以参考下 iOS SDK Demo 源码:   <https://github.com/visionetwsk/WSK_iOS_SDK_Demo.git>。  
 源码充分的展示了 iOS SDK 的能力，并且为集成 iOS SDK 提供了样例代码。
-
-
 

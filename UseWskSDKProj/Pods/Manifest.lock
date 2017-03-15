@@ -1,15 +1,15 @@
 PODS:
-  - Socket.IO-Client-Swift (8.1.2)
-  - WSK_iOS_SDK (0.0.4):
-    - Socket.IO-Client-Swift (= 8.1.2)
+  - Socket.IO-Client-Swift (8.3.0)
+  - WSK_iOS_SDK (1.0.2):
+    - Socket.IO-Client-Swift (= 8.3.0)
 
 DEPENDENCIES:
-  - WSK_iOS_SDK (~> 0.0.3)
+  - WSK_iOS_SDK (~> 1.0)
 
 SPEC CHECKSUMS:
-  Socket.IO-Client-Swift: 542d82e6708f9901b3f6c1d134fb60fa0d09d4d1
-  WSK_iOS_SDK: ed7615ab30786a4d1af76866ddf3a62a9585b1ab
+  Socket.IO-Client-Swift: 7ad3aded3c0f74d99555e950ac3aa82ca3eefbaf
+  WSK_iOS_SDK: 4e26889dbdb65a00e829d8921a241511088d82b1
 
-PODFILE CHECKSUM: 46cbfacb7e98fa329de0d8fdf18f382fc9222d4d
+PODFILE CHECKSUM: b5e71c2b97295144ba89beb0cc28631d3f5cd3bf
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.0

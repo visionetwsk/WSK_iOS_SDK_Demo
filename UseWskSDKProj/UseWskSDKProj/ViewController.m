@@ -59,29 +59,45 @@
     //输入框文字颜色
     [[WSKSDK sharedSDK] customUIConfig].inputTextColor = [UIColor blackColor];
     
-    //客户头像URL
+    //选择一种方式设置客户头像
+    //a、通过图片URL设置客户头像
     [[WSKSDK sharedSDK] customUIConfig].customerHeadURL = [NSURL URLWithString:@"http://visionet.findest.com/letsdesk/assets/img/logo-1.png"];
-    //客户头像
+    //b、同步本地图片设置客户头像
     [[WSKSDK sharedSDK] customUIConfig].customerHeadImage = [UIImage imageNamed:@"customer_avatar"];
     
     //默认进入聊天界面键盘弹起
     [[WSKSDK sharedSDK] customUIConfig].isShowKeyboard = YES;
 }
 
+//PUSH方式进入客服咨询页面
 - (IBAction)pushControllerAction:(id)sender {
     //设置用户信息
     WSKUserVo *userVo = [[WSKUserVo alloc]init];
-        userVo.strUserID = @"45471429667";    //开发账号
-        userVo.strUserName = @"iOS_SDK_用户2";
+    userVo.userID = @"45471429667";    //开发账号
+    userVo.userName = @"Mary";
+    userVo.headerImageURL = @"http://tupian.enterdesk.com/2014/lxy/2014/12/03/6/8.png";
+    userVo.gender = 1;  //1：男、2：女
+    userVo.phoneNumber = @"18611111111";
+    userVo.telephone = @"021-12345678";
+    userVo.email = @"71232131@qq.com";
     
-//    userVo.strUserID = @"45471429666";  //娜娜：测试账号
-//    userVo.strUserName = @"iOS_SDK_用户1";
+    userVo.address = @"上海市长宁区";
+    userVo.position = @"人事经理";
+    userVo.department = @"人事部";
+    userVo.birthday = @"1988-12-12";
+    userVo.remark = @"备注SDK";
     
     [[WSKSDK sharedSDK] setUserInfo:userVo];
     
     //启动聊天界面
     WSKChatViewController *chatViewController = [[WSKSDK sharedSDK] chatViewController];
     chatViewController.chatTitle = @"微上客SDK测试";
+    
+    //监控SDK内的链接跳转动作
+    chatViewController.linkClickBlock = ^(NSString *urlString) {
+        NSLog(@"URL String: %@", urlString);
+        return YES;
+    };
     
     //文字
 //    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"返回1" style:UIBarButtonItemStylePlain target:self action:@selector(onPop:)];
@@ -99,20 +115,30 @@
     [self.navigationController pushViewController:chatViewController animated:YES];
 }
 
+//Present方式进入客服咨询页面
 - (IBAction)presentControllerAction:(id)sender {
     //设置用户信息
     WSKUserVo *userVo = [[WSKUserVo alloc]init];
-    userVo.strUserID = @"45471429667";    //开发账号
-    userVo.strUserName = @"iOS_SDK_用户2";
+    userVo.userID = @"45471429667";    //开发账号
+    userVo.userName = @"Mary";
+    userVo.headerImageURL = @"http://tupian.enterdesk.com/2014/lxy/2014/12/03/6/8.png";
+    userVo.gender = 1;  //1：男、2：女
+    userVo.phoneNumber = @"18611111111";
+    userVo.telephone = @"021-12345678";
+    userVo.email = @"71232131@qq.com";
     
-//        userVo.strUserID = @"45471429666";  //娜娜：测试账号
-//        userVo.strUserName = @"iOS_SDK_用户1";
+    userVo.address = @"上海市长宁区";
+    userVo.position = @"人事经理";
+    userVo.department = @"人事部";
+    userVo.birthday = @"1988-12-12";
+    userVo.remark = @"备注SDK";
     
     [[WSKSDK sharedSDK] setUserInfo:userVo];
     
     //启动聊天界面
     WSKChatViewController *chatViewController = [[WSKSDK sharedSDK] chatViewController];
     chatViewController.chatTitle = @"微上客SDK测试";
+    
     //文字
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(onBack:)];
     backButton.tintColor = [UIColor greenColor];
@@ -128,7 +154,6 @@
     
     UINavigationController *navigationController  = [[UINavigationController alloc] initWithRootViewController:chatViewController];
     [navigationController.navigationBar setBackgroundImage:[Common getImageWithColor:[UIColor colorWithRed:18/255.0 green:183/255.0 blue:246/255.0 alpha:1.0]] forBarMetrics:UIBarMetricsDefault];
-//    navigationController.navigationBar.translucent = NO;
     [self presentViewController:navigationController animated:YES completion:nil];
 }
 

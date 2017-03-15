@@ -20,24 +20,36 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     //注册App
-    [[WSKSDK sharedSDK] registerAppKey:@"dmlzaW9uZXQ6TW9iaWxlQ2hhdFRlc3Qx" appName:@"iosAppName2"];
+    [[WSKSDK sharedSDK] registerAppKey:@"dmlzaW9uZXQ6NmYyZThhZDA4ZTIzNzFhYWU0NjgwZjE5ZDM2MTU4Mjk=" appName:@"iOSDemo"];
+    
+    //开启调试模式
+    //设置调试模式获取更多的Log信息，发布应用时建议不开启，用于节省性能开销
+    [[WSKSDK sharedSDK] setDebugMode];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(test) name:@"WSK_SOCKETIO_MESSAGE" object:nil];
     
     //注册APNs推送
     if ([[UIDevice currentDevice].systemVersion floatValue] >= 10.0) {
+        // iOS10
+        [UNUserNotificationCenter currentNotificationCenter].delegate = self;
         [[UNUserNotificationCenter currentNotificationCenter] requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) completionHandler:^(BOOL granted, NSError * _Nullable error) {
             if (!error) {
                 NSLog(@"request authorization succeeded!");
             }
+            [[UIApplication sharedApplication] registerForRemoteNotifications];
         }];
-        [[UIApplication sharedApplication] registerForRemoteNotifications];
     } else {
         //小于 iOS 10.0
-        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
-        [application registerUserNotificationSettings:settings];
+        // 小于iOS10
+        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil]];
         [[UIApplication sharedApplication] registerForRemoteNotifications];
     }
     
     return YES;
+}
+
+- (void)test {
+    NSLog(@"收到node推送");
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -71,7 +83,6 @@
 
 //获取Device Token
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    NSLog(@"%@", [NSString stringWithFormat:@"Get Device Token: %@", deviceToken]);
     [[WSKSDK sharedSDK] updateApnsToken:deviceToken];
 }
 
@@ -79,14 +90,19 @@
     NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
 }
 
-//iOS7及以上系统，收到通知
+// iOS7~iOS9 及以上系统，收到APNs通知
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    NSLog(@"收到APNS通知消息：%@", userInfo);
+    
+    //Required
     completionHandler(UIBackgroundFetchResultNewData);
 }
 
 #pragma mark - UNUserNotificationCenterDelegate
 // 前台收到推送
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler {
+    NSLog(@"收到APNS通知消息：%@", notification.request.content.userInfo);
+    
     if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         //远程通知
     } else {
@@ -98,6 +114,8 @@
 
 // 点击通知栏触发的推送
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)())completionHandler {
+    NSLog(@"收到APNS通知消息：%@", response.notification.request.content.userInfo);
+    
     if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         //远程通知
     } else {
